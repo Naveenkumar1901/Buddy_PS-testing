@@ -2,5 +2,8 @@
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
     "cypress": "^12.5.1"
+  },
+  "dependencies": {
+    "cypress-file-upload": "^5.0.8"
   }
 }
