@@ -330,10 +330,32 @@ describe("Opportunity", () => {
     cy.get("button[class='ant-btn ant-btn-primary'] span").click();
   });
 
-  it.only("Validate by giving fromDate and toDate in advance filters and check whether it brings date range correctly", () => {
+  it("Validate by giving fromDate and toDate in advance filters and check whether it brings date range correctly", () => {
     cy.get("#fromDate").click().clear().type("2023-02-28,{enter}");
     cy.get("#toDate").click().clear().type("2023-03-31,{enter}").wait(1000);
     cy.get(".ant-pagination-item-2 > a").click();
+  });
+
+  it("Verify by giving followup date and validate the advance filters options", () => {
+    cy.get(".ant-btn-link").click();
+    cy.get("div[class='ant-col'] button[type='button']").click();
+    cy.get(
+      "div[class='ant-col ant-col-8'] div[class='ant-select-selector']"
+    ).click();
+    cy.get(
+      "div[title='Followup Date'] div[class='ant-select-item-option-content']"
+    )
+      .scrollIntoView() //scroll not working
+      .click();
+    cy.get("#rc_select_8").click();
+    cy.get(
+      "div[title='>'] div[class='ant-select-item-option-content']"
+    ).click();
+    cy.get("input[placeholder='Value']")
+      .click()
+      .type("2023-02-28,{enter}")
+      .wait(1000);
+    cy.xpath("(//button[@type='button'])[32]").click();
   });
 
 });
