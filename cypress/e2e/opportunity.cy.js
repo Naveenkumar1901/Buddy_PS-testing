@@ -282,7 +282,7 @@ describe("Opportunity", () => {
     cy.xpath("(//div[@class='ant-tabs-tab'])[2]").scrollIntoView().click();
   });
 
-  it.only("Adding 10 tasks and validate the documents whether showing all the data", () => {
+  it("Adding 10 tasks and validate the documents whether showing all the data", () => {
     cy.fixture("addTasksData").then((fixtureData) => {
       fixtureData.map((eachTaskData) => {
         cy.get("li[title='2'] a[rel='nofollow']").click(); //pagination
@@ -316,6 +316,24 @@ describe("Opportunity", () => {
         .wait(1000);
       cy.xpath("(//a[normalize-space()='2'])[1]").click().wait(1000);
     });
+  });
+
+  it("After adding the opportunity, editing and update process need to be checked", () => {
+    cy.get("li[title='2'] a[rel='nofollow']").click();
+    cy.get("a[href='/NewOpportunity?id=40045']").click();
+    cy.get("#basic_startDate").click().type("2023-02-22, {enter}");
+    cy.get("#basic_endDate").click().type("2023-03-31, {enter}");
+    cy.get(
+      "button[class='ant-btn ant-btn-primary hp-bg-success-1 hp-border-color-success-1']"
+    ).click();
+    cy.get(".ant-modal-confirm-title").contains("Updated Successfully.");
+    cy.get("button[class='ant-btn ant-btn-primary'] span").click();
+  });
+
+  it.only("Validate by giving fromDate and toDate in advance filters and check whether it brings date range correctly", () => {
+    cy.get("#fromDate").click().clear().type("2023-02-28,{enter}");
+    cy.get("#toDate").click().clear().type("2023-03-31,{enter}").wait(1000);
+    cy.get(".ant-pagination-item-2 > a").click();
   });
 
 });
