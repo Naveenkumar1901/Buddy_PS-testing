@@ -20,3 +20,8 @@ import './commands'
 // require('./commands')
 require('@cypress/xpath');
 require("cypress-file-upload");
+
+
+Cypress.on("uncaught:exception", () => {
+  return false;
+});

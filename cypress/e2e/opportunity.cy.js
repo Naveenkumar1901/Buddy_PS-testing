@@ -16,7 +16,7 @@ describe("Opportunity", () => {
     cy.get("a[href='/opportunity']").click().wait(1000);
   });
 
-  it("Adding New Customer", () => {
+  it("Adding new customer", () => {
     cy.get(".hp-float-right > .ant-btn").click();
     cy.get(":nth-child(3) > .ant-btn").click().wait(1000);
     cy.get("#basic_series").click();
@@ -70,7 +70,7 @@ describe("Opportunity", () => {
     cy.get(".ant-modal-confirm-btns > .ant-btn > span").click();
   });
 
-  it("After Clicking Exiting Customer, Customers should List in dropdown Page", () => {
+  it("After clicking exiting customer, customers should list in dropdown page", () => {
     cy.get(".hp-float-right > .ant-btn").click();
     cy.get(".ant-switch").click();
     cy.get("#basic_customerCode").click();
@@ -233,7 +233,7 @@ describe("Opportunity", () => {
     });
   });
 
-  it("Validate the Export Option is correctly exported in Excel Format.", () => {
+  it("Validate the export option is correctly exported in excel format", () => {
     cy.get("button[class='ant-btn ant-btn-primary']").click();
   });
 
@@ -254,7 +254,7 @@ describe("Opportunity", () => {
     cy.get("#basic_phone").should("have.value", "1234567890");
   });
 
-  it("verify After adding the Task added showing correctly", () => {
+  it("Verify after adding the task added showing correctly", () => {
     cy.get("li[title='2'] a[rel='nofollow']").click(); //pagination
     cy.xpath("(//button[@type='button'])[16]").click(); //menu options
     cy.xpath("//a[normalize-space()='Create Task']").click(); //create task
